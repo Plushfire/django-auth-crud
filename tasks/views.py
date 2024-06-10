@@ -87,14 +87,14 @@ def task_detail(request, task_id):
             return render(request, 'task_detail.html', {'task': task, 'form': form, 'error':'Error updating task'})
 
 @login_required
-def complete_task(request, task_id):
+def delete_task(request, task_id):
     task =get_object_or_404(models.Task, pk=task_id, user=request.user)
     if request.method == 'POST':
         task.delete()
         return redirect('tasks')
 
 @login_required
-def delete_task(request, task_id):
+def complete_task(request, task_id):
     task =get_object_or_404(models.Task, pk=task_id, user=request.user)
     if request.method == 'POST':
         task.datecompleted = timezone.now()

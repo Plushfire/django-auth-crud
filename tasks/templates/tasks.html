@@ -5,7 +5,10 @@
     <div class="col-md-6 offset-md-3">
       {% if user.is_authenticated %}
 
-      <h1 class="text-center display-3 py-5">Tasks Pending</h1>
+      <h1 class="text-center display-3 py-5">
+        {% if request.path == '/tasks_completed/' %} Tasks Completed {% else %}
+        Tasks pendings {% endif %}
+      </h1>
 
       <a href="{% url 'create_task' %}" class="btn btn-success">Crear tarea</a>
 
